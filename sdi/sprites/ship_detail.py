@@ -9,4 +9,4 @@ class ShipDetail(pygame.sprite.Sprite):
 
         self.image = pygame.image.load(os.path.join("assets", "spaceships", image_path))
         self.rect = self.image.get_rect()
-        self.image = pygame.transform.scale(self.image, (522 // 2, 522 // 2))
+        self.image = pygame.transform.scale(self.image, (222, 222))
