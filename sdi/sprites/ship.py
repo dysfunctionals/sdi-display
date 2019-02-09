@@ -23,7 +23,11 @@ class Spaceship(pygame.sprite.Sprite):
         self.x_vel = 0
         self.y_vel = 0
 
-        self.power = 0
+        self.power = {
+            "engines": 0,
+            "shields": 0,
+            "weapons": 0
+        }
 
         self.bearing = bearing
 
@@ -34,8 +38,8 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect.x += self.x_vel
         self.rect.y += self.y_vel
 
-        self.x_vel -= math.sin(math.radians(self.bearing)) * self.power
-        self.y_vel -= math.cos(math.radians(self.bearing)) * self.power
+        self.x_vel -= math.sin(math.radians(self.bearing)) * self.power['engines']
+        self.y_vel -= math.cos(math.radians(self.bearing)) * self.power['engines']
 
         self.image, self.rect = Spaceship.rotate(
             self.raw_image, self.rect, self.bearing
