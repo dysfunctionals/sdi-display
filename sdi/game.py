@@ -40,7 +40,10 @@ class Game:
     def play(self, screen, game):
 
         all_sprites = pygame.sprite.Group()
-        ships = pygame.sprite.Group()
+        ship_group = pygame.sprite.Group()
+
+        ships = []
+
         background = Background(screen)
 
         clock = pygame.time.Clock()
@@ -54,7 +57,8 @@ class Game:
             ship.rect.x = sh['init_pos'][0]
             ship.rect.y = sh['init_pos'][1]
             all_sprites.add(ship)
-            ships.add(ship)
+            ship_group.add(ship)
+            ships.append(ship)
 
         while game_playing:
 
@@ -62,6 +66,29 @@ class Game:
 
                 if event.type == pygame.QUIT:
                     game_playing = False
+
+                if event.type == pygame.KEYDOWN:
+
+                    for index, ship in enumerate(game.config['ships']):
+
+                        try:
+                            direction = ship['controls'].index(event.key)
+
+                            speed_delta = 1
+
+                            if direction == 0:
+                                ships[index].y_velocity -= speed_delta
+                            if direction == 1:
+                                ships[index].x_velocity -= speed_delta
+                            if direction == 2:
+                                ships[index].y_velocity += speed_delta
+                            if direction == 3:
+                                ships[index].x_velocity += speed_delta
+
+                        except ValueError:
+                            pass
+
+
 
             all_sprites.update()
 
