@@ -41,10 +41,10 @@ class Spaceship(pygame.sprite.Sprite):
             self.raw_image, self.rect, self.bearing
         )
 
-        if self.rect.y < 0 or self.rect.y > 1080 - self.image.get_height():
+        if (self.rect.y < 0 and self.y_vel < 0) or (self.rect.y > 1080 - self.image.get_height() and self.y_vel > 0):
             self.y_vel = -self.y_vel
 
-        if self.rect.x < 0 or self.rect.x > (1920-288) - self.image.get_width():
+        if (self.rect.x < 0 and self.x_vel < 0) or (self.rect.x > (1920-288) - self.image.get_width() and self.x_vel > 0):
             self.x_vel = -self.x_vel
 
     @staticmethod
