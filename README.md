@@ -1,2 +1,2 @@
-# sdi-display
-The display for SDI.
+# SDI Display
+

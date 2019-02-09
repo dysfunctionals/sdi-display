@@ -1,0 +1,1 @@
+"""The Strategic Defence Initiative."""
