@@ -7,6 +7,7 @@ from sdi.background import Background
 from sdi.sprites import Spaceship
 from sdi.detailoid import Detailoid
 from sdi.sprites.ship_detail import ShipDetail
+from sdi.intro import Intro
 
 
 class Game:
@@ -34,6 +35,8 @@ class Game:
 
             if machine.state == GameState.PLAYING:
                 machine.state = self.play(self.screen, self)
+            elif machine.state == GameState.INTRO:
+                machine.state = Intro.run(self.screen)
             else:
                 raise EnvironmentError
 

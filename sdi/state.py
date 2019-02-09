@@ -5,13 +5,14 @@ from enum import Enum
 
 class GameState(Enum):
 
-    PLAYING = 1
+    INTRO = 0
+    PLAYING = 10
     END = 100
 
 
 class StateMachine:
 
-    initial_state = GameState.PLAYING
+    initial_state = GameState.INTRO
 
     def __init__(self):
 
