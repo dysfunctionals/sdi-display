@@ -27,11 +27,35 @@ class Game:
         while machine.state != GameState.END:
 
             if machine.state == GameState.PLAYING:
-                self.play(self.screen)
+                machine.state = self.play(self.screen)
             else:
                 raise EnvironmentError
 
         pygame.quit()
 
     def play(self, screen):
-        pass
+
+        all_sprites = pygame.sprite.Group()
+
+        clock = pygame.time.Clock()
+
+        game_playing = True
+
+        start_ticks = pygame.time.get_ticks()
+
+        while game_playing:
+
+            for event in pygame.event.get():
+
+                if event.type == pygame.QUIT:
+                    game_playing = False
+
+            all_sprites.update()
+
+            all_sprites.draw(screen)
+
+            pygame.display.flip()
+            clock.tick(60)
+
+        return GameState.END
+
