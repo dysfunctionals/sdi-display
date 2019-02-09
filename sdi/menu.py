@@ -59,7 +59,7 @@ class PressyBoi(pygame.sprite.DirtySprite):
         self.rect = self.image.get_rect()
 
         self.rect.x = 771
-        self.rect.y = 1800
+        self.rect.y = 2200
 
         self.count = 0
         self.visible = True
@@ -81,6 +81,28 @@ class PressyBoi(pygame.sprite.DirtySprite):
                     self.image.fill((0, 0, 0))
 
 
+class Ronald(pygame.sprite.DirtySprite):
+
+    def __init__(self):
+        super().__init__()
+
+        self.image = pygame.image.load(
+            os.path.join("assets", "sizeable-ronald.png")
+        )
+
+        self.rect = self.image.get_rect()
+
+        self.rect.x = 818
+        self.rect.y = 1800
+
+        self.count = 0
+        self.visible = True
+
+    def update(self):
+
+        if self.rect.y > 405:
+            self.rect.y -= 4.5
+
 class Menu:
 
     @staticmethod
@@ -93,10 +115,12 @@ class Menu:
         circleboi = CircleBoi()
         titleboi = TitleBoi()
         pressyboi = PressyBoi()
+        ron = Ronald()
 
         all_sprites.add(circleboi)
         all_sprites.add(titleboi)
         all_sprites.add(pressyboi)
+        all_sprites.add(ron)
 
         start_ticks = pygame.time.get_ticks()
 
