@@ -8,4 +8,4 @@ class ShipDetail(pygame.sprite.Sprite):
         super().__init__()
 
         self.image = pygame.image.load(os.path.join("assets", "spaceships", image_path))
-        self.image = pygame.transform.scale(self.image, (128, 128))
+        self.image = pygame.transform.scale(self.image, (576, 576))
