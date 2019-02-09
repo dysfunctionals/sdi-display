@@ -2,7 +2,9 @@ import pygame, math, os
 
 
 class Spaceship(pygame.sprite.Sprite):
-    def __init__(self, img_path):
+
+    def __init__(self, img_path, bearing):
+
 
         super().__init__()
 
@@ -23,7 +25,7 @@ class Spaceship(pygame.sprite.Sprite):
 
         self.power = 0
 
-        self.bearing = 0
+        self.bearing = bearing
 
     def update(self):
 
