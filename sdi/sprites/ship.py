@@ -2,12 +2,13 @@ import pygame, math, os
 
 
 class Spaceship(pygame.sprite.Sprite):
-
     def __init__(self, img_path):
 
         super().__init__()
 
-        self.raw_image = pygame.image.load(os.path.join("assets", "spaceships", img_path))
+        self.raw_image = pygame.image.load(
+            os.path.join("assets", "spaceships", img_path)
+        )
         self.raw_image = pygame.transform.scale(self.raw_image, (64, 64))
 
         self.image = self.raw_image
@@ -34,15 +35,15 @@ class Spaceship(pygame.sprite.Sprite):
         self.x_vel -= math.sin(math.radians(self.bearing)) * self.power
         self.y_vel -= math.cos(math.radians(self.bearing)) * self.power
 
-        self.image, self.rect = Spaceship.rotate(self.raw_image, self.rect, self.bearing)
+        self.image, self.rect = Spaceship.rotate(
+            self.raw_image, self.rect, self.bearing
+        )
 
         if self.rect.y < 0 or self.rect.y > 1080 - self.image.get_height():
             self.y_vel = -self.y_vel
 
         if self.rect.x < 0 or self.rect.x > 1920 - self.image.get_width():
             self.x_vel = -self.x_vel
-
-
 
     @staticmethod
     def rotate(image, rect, angle):
@@ -52,5 +53,3 @@ class Spaceship(pygame.sprite.Sprite):
         # Get a new rect with the center of the old rect.
         rect = new_image.get_rect(center=rect.center)
         return new_image, rect
-
-

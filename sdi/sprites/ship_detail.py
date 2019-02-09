@@ -1,8 +1,8 @@
 import pygame
 import os
 
-class ShipDetail(pygame.sprite.Sprite):
 
+class ShipDetail(pygame.sprite.Sprite):
     def __init__(self, image_path):
 
         super().__init__()

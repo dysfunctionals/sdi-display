@@ -56,23 +56,22 @@ class Game:
 
         d = Detailoid()
 
-        for sh in game.config['ships']:
-            ship = Spaceship(sh['img'])
-            ship.rect.x = sh['init_pos'][0]
-            ship.rect.y = sh['init_pos'][1]
+        for sh in game.config["ships"]:
+            ship = Spaceship(sh["img"])
+            ship.rect.x = sh["init_pos"][0]
+            ship.rect.y = sh["init_pos"][1]
             all_sprites.add(ship)
             ship_group.add(ship)
             ships.append(ship)
 
         all_sprites.add(d)
 
-        #Note: two for loops through ships are used because it needs to work like that
-        for sh in game.config['ships']:
-            shop = ShipDetail(sh['detail_img'])
-            shop.rect.x = sh['detail_pos'][0]
-            shop.rect.y = sh['detail_pos'][1]
+        # Note: two for loops through ships are used because it needs to work like that
+        for sh in game.config["ships"]:
+            shop = ShipDetail(sh["detail_img"])
+            shop.rect.x = sh["detail_pos"][0]
+            shop.rect.y = sh["detail_pos"][1]
             all_sprites.add(shop)
-
 
         while game_playing:
 
@@ -83,10 +82,10 @@ class Game:
 
                 if event.type == pygame.KEYDOWN:
 
-                    for index, ship in enumerate(game.config['ships']):
+                    for index, ship in enumerate(game.config["ships"]):
 
                         try:
-                            direction = ship['controls'].index(event.key)
+                            direction = ship["controls"].index(event.key)
 
                             velocity_delta = 0.2
                             bearing_delta = 15
@@ -112,4 +111,3 @@ class Game:
             clock.tick(60)
 
         return GameState.END
-

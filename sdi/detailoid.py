@@ -1,10 +1,9 @@
-import pygame, \
-os
+import pygame, os
 
 TWO_HUNDRED_EIGHTY_EIGHT = 288
 
-class Detailoid(pygame.sprite.Sprite):
 
+class Detailoid(pygame.sprite.Sprite):
     def __init__(self):
 
         super().__init__()
