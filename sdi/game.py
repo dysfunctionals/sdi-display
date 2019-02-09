@@ -5,6 +5,8 @@ import pygame
 from sdi.state import StateMachine, GameState
 from sdi.background import Background
 from sdi.sprites import Spaceship
+from sdi.detailoid import Detailoid
+from sdi.sprites.ship_detail import ShipDetail
 
 
 class Game:
@@ -52,6 +54,8 @@ class Game:
 
         start_ticks = pygame.time.get_ticks()
 
+        d = Detailoid()
+
         for sh in game.config['ships']:
             ship = Spaceship(sh['img'])
             ship.rect.x = sh['init_pos'][0]
@@ -59,6 +63,16 @@ class Game:
             all_sprites.add(ship)
             ship_group.add(ship)
             ships.append(ship)
+
+        all_sprites.add(d)
+
+        #Note: two for loops through ships are used because it needs to work like that
+        for sh in game.config['ships']:
+            shop = ShipDetail(sh['detail_img'])
+            shop.rect.x = sh['detail_pos'][0]
+            shop.rect.y = sh['detail_pos'][1]
+            all_sprites.add(shop)
+
 
         while game_playing:
 
