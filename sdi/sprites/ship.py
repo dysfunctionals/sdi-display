@@ -17,3 +17,8 @@ class Spaceship(pygame.sprite.Sprite):
 
         self.x_velocity = 0
         self.y_velocity = 0
+
+    def update(self):
+
+        self.rect.x += self.x_velocity
+        self.rect.y += self.y_velocity
