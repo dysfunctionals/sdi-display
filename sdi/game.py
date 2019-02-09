@@ -57,7 +57,7 @@ class Game:
         d = Detailoid()
 
         for sh in game.config["ships"]:
-            ship = Spaceship(sh["img"])
+            ship = Spaceship(sh["img"], sh["init_bearing"])
             ship.rect.x = sh["init_pos"][0]
             ship.rect.y = sh["init_pos"][1]
             all_sprites.add(ship)
