@@ -74,15 +74,15 @@ class Game:
                         try:
                             direction = ship['controls'].index(event.key)
 
-                            velocity_delta = 1
-                            bearing_delta = 5
+                            velocity_delta = 0.2
+                            bearing_delta = 15
 
                             if direction == 0:
-                                ships[index].velocity += velocity_delta
+                                ships[index].power += velocity_delta
                             if direction == 1:
                                 ships[index].bearing += bearing_delta
                             if direction == 2:
-                                ships[index].velocity -= velocity_delta
+                                ships[index].power -= velocity_delta
                             if direction == 3:
                                 ships[index].bearing -= bearing_delta
 

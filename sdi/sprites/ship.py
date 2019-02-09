@@ -17,36 +17,24 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect.x = 0
         self.rect.y = 0
 
-        self.velocity = 0
+        self.x_vel = 0
+        self.y_vel = 0
+
+        self.power = 0
 
         self.bearing = 0
 
     def update(self):
 
-        self.update_rect()
-
         self.bearing = self.bearing % 360
 
+        self.rect.x += self.x_vel
+        self.rect.y += self.y_vel
+
+        self.x_vel -= math.sin(math.radians(self.bearing)) * self.power
+        self.y_vel -= math.cos(math.radians(self.bearing)) * self.power
+
         self.image, self.rect = Spaceship.rotate(self.raw_image, self.rect, self.bearing)
-
-    def update_rect(self):
-
-        if self.bearing >= 0 and self.bearing < 90:
-            self.rect.x += math.sin(math.radians(self.bearing)) * self.velocity
-            self.rect.y -= math.cos(math.radians(self.bearing)) * self.velocity
-
-        if self.bearing >= 90 and self.bearing < 180:
-            self.rect.x += math.sin(math.radians(180 - self.bearing)) * self.velocity
-            self.rect.y += math.cos(math.radians(180 - self.bearing)) * self.velocity
-
-        if self.bearing >= 180 and self.bearing < 270:
-            self.rect.x -= math.sin(math.radians(180 + self.bearing)) * self.velocity
-            self.rect.y += math.cos(math.radians(180 + self.bearing)) * self.velocity
-
-        if self.bearing >= 270 and self.bearing <= 360:
-            self.rect.x -= math.sin(math.radians(360 - self.bearing)) * self.velocity
-            self.rect.y -= math.cos(math.radians(360 - self.bearing)) * self.velocity
-
 
 
     @staticmethod
