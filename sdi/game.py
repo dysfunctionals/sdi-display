@@ -3,6 +3,7 @@
 import pygame
 
 from sdi.state import StateMachine, GameState
+from sdi.background import Background
 
 
 class Game:
@@ -36,6 +37,7 @@ class Game:
     def play(self, screen):
 
         all_sprites = pygame.sprite.Group()
+        background = Background(screen)
 
         clock = pygame.time.Clock()
 
@@ -52,6 +54,7 @@ class Game:
 
             all_sprites.update()
 
+            background.render(screen)
             all_sprites.draw(screen)
 
             pygame.display.flip()
