@@ -6,6 +6,7 @@ from enum import Enum
 class GameState(Enum):
 
     INTRO = 0
+    MENU = 5
     PLAYING = 10
     END = 100
 
