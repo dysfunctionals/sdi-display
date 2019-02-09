@@ -4,6 +4,7 @@ import pygame
 
 from sdi.state import StateMachine, GameState
 from sdi.background import Background
+from sdi.sprites import Spaceship
 
 
 class Game:
@@ -13,7 +14,9 @@ class Game:
     screen_width = 1920
     screen_height = 1080
 
-    def __init__(self):
+    def __init__(self, config):
+        self.config = config
+
         pygame.init()
 
         pygame.display.set_caption(Game.title)
@@ -28,15 +31,16 @@ class Game:
         while machine.state != GameState.END:
 
             if machine.state == GameState.PLAYING:
-                machine.state = self.play(self.screen)
+                machine.state = self.play(self.screen, self)
             else:
                 raise EnvironmentError
 
         pygame.quit()
 
-    def play(self, screen):
+    def play(self, screen, game):
 
         all_sprites = pygame.sprite.Group()
+        ships = pygame.sprite.Group()
         background = Background(screen)
 
         clock = pygame.time.Clock()
@@ -44,6 +48,13 @@ class Game:
         game_playing = True
 
         start_ticks = pygame.time.get_ticks()
+
+        for sh in game.config['ships']:
+            ship = Spaceship(sh['img'])
+            ship.rect.x = sh['init_pos'][0]
+            ship.rect.y = sh['init_pos'][1]
+            all_sprites.add(ship)
+            ships.add(ship)
 
         while game_playing:
 
