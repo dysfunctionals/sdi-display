@@ -2,6 +2,7 @@ import pygame
 import os
 from sdi.state import GameState
 
+
 class Intro:
 
     @staticmethod
@@ -32,4 +33,4 @@ class Intro:
                 elif event.type == MUSIC_DEATH:
                     waiting = False
 
-        return GameState.PLAYING
+        return GameState.MENU
