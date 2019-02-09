@@ -1,4 +1,4 @@
-import pygame, os
+import pygame, math, os
 
 
 class Spaceship(pygame.sprite.Sprite):
@@ -7,18 +7,50 @@ class Spaceship(pygame.sprite.Sprite):
 
         super().__init__()
 
-        self.image = pygame.image.load(os.path.join("assets", "spaceships", img_path))
-        self.image = pygame.transform.scale(self.image, (64, 64))
+        self.raw_image = pygame.image.load(os.path.join("assets", "spaceships", img_path))
+        self.raw_image = pygame.transform.scale(self.raw_image, (64, 64))
+
+        self.image = self.raw_image
 
         self.rect = self.image.get_rect()
 
         self.rect.x = 0
         self.rect.y = 0
 
-        self.x_velocity = 0
-        self.y_velocity = 0
+        self.x_vel = 0
+        self.y_vel = 0
+
+        self.power = 0
+
+        self.bearing = 0
 
     def update(self):
 
-        self.rect.x += self.x_velocity
-        self.rect.y += self.y_velocity
+        self.bearing = self.bearing % 360
+
+        self.rect.x += self.x_vel
+        self.rect.y += self.y_vel
+
+        self.x_vel -= math.sin(math.radians(self.bearing)) * self.power
+        self.y_vel -= math.cos(math.radians(self.bearing)) * self.power
+
+        self.image, self.rect = Spaceship.rotate(self.raw_image, self.rect, self.bearing)
+
+        if self.rect.y < 0 or self.rect.y > 1080 - self.image.get_height():
+            self.y_vel = -self.y_vel
+
+        if self.rect.x < 0 or self.rect.x > 1920 - self.image.get_width():
+            self.x_vel = -self.x_vel
+
+
+
+    @staticmethod
+    def rotate(image, rect, angle):
+        """Rotate the image while keeping its center."""
+        # Rotate the original image without modifying it.
+        new_image = pygame.transform.rotate(image, angle)
+        # Get a new rect with the center of the old rect.
+        rect = new_image.get_rect(center=rect.center)
+        return new_image, rect
+
+

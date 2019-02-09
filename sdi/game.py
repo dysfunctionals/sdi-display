@@ -88,21 +88,20 @@ class Game:
                         try:
                             direction = ship['controls'].index(event.key)
 
-                            speed_delta = 1
+                            velocity_delta = 0.2
+                            bearing_delta = 15
 
                             if direction == 0:
-                                ships[index].y_velocity -= speed_delta
+                                ships[index].power += velocity_delta
                             if direction == 1:
-                                ships[index].x_velocity -= speed_delta
+                                ships[index].bearing += bearing_delta
                             if direction == 2:
-                                ships[index].y_velocity += speed_delta
+                                ships[index].power -= velocity_delta
                             if direction == 3:
-                                ships[index].x_velocity += speed_delta
+                                ships[index].bearing -= bearing_delta
 
                         except ValueError:
                             pass
-
-
 
             all_sprites.update()
 
