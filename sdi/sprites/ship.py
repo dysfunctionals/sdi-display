@@ -36,6 +36,13 @@ class Spaceship(pygame.sprite.Sprite):
 
         self.image, self.rect = Spaceship.rotate(self.raw_image, self.rect, self.bearing)
 
+        if self.rect.y < 0 or self.rect.y > 1080 - self.image.get_height():
+            self.y_vel = -self.y_vel
+
+        if self.rect.x < 0 or self.rect.x > 1920 - self.image.get_width():
+            self.x_vel = -self.x_vel
+
+
 
     @staticmethod
     def rotate(image, rect, angle):
