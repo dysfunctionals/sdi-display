@@ -1,4 +1,5 @@
 import pygame
+import copy
 import os
 from sdi.state import GameState
 
@@ -44,24 +45,40 @@ class TitleBoi(pygame.sprite.Sprite):
             self.rect.y -= 5
 
 
-class PressyBoi(pygame.sprite.Sprite):
+class PressyBoi(pygame.sprite.DirtySprite):
 
     def __init__(self):
         super().__init__()
 
-        self.image = pygame.image.load(
+        self.raw_image = pygame.image.load(
             os.path.join("assets", "begin.png")
         )
+
+        self.image = copy.copy(self.raw_image)
 
         self.rect = self.image.get_rect()
 
         self.rect.x = 771
         self.rect.y = 1800
 
+        self.count = 0
+        self.visible = True
+
     def update(self):
 
         if self.rect.y > 930:
             self.rect.y -= 4.5
+        else:
+            self.count += 1
+
+            if self.count > 30:
+                self.visible = not self.visible
+                self.count = 0
+
+                if self.visible:
+                    self.image = copy.copy(self.raw_image)
+                else:
+                    self.image.fill((0, 0, 0))
 
 
 class Menu:
