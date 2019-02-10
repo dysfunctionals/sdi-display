@@ -9,6 +9,7 @@ verify_ssl = true
 pygame = "*"
 click = "*"
 requests = "*"
+pyganim = "*"
 
 [requires]
 python_version = "3.7"
