@@ -35,6 +35,8 @@ class Spaceship(pygame.sprite.Sprite):
             "weapons": 0,
         }
 
+        self.health = 100
+
     def update(self):
 
         self.bearing["engines"] = self.bearing["engines"] % 360
