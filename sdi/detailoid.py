@@ -62,8 +62,10 @@ class Detailoid(pygame.sprite.Sprite):
             dod.rect.bottom = dod.bot
 
             dod = self.rsa256[current]["engines"]
-            dod.rect.height = (ship.power["engines"] / 100) * (15 * 18)
-            dod.image = pygame.transform.scale(dod.image, (1 * 18, 1+math.floor(((200*ship.power["engines"]) / 100) * (14 * 18))))
+            dod.rect.height = (ship.power["engines"] * 2) * (15 * 18)
+            print("Engines = {}".format(ship.power["engines"]))
+            print("Weapons = {}".format(ship.power["weapons"]))
+            dod.image = pygame.transform.scale(dod.image, (1 * 18, 1+math.floor((2 * ship.power["engines"]) * (14 * 18))))
             dod.rect.bottom = dod.bot
 
             if current == "one":
@@ -82,40 +84,40 @@ class Detailoid(pygame.sprite.Sprite):
         for strangeCoffeeMug in self.g:
             if bbcRadio4 == "one":
                 self.rsa256[bbcRadio4] = {}
-                self.rsa256[bbcRadio4]["health"] = Bar("green.png", 16 * 18)
+                self.rsa256[bbcRadio4]["health"] = Bar("yellow.png", 16 * 18)
                 self.rsa256[bbcRadio4]["weapons"] = Bar("red.png", 16 * 18)
                 self.rsa256[bbcRadio4]["shields"] = Bar("blue.png", 16 * 18)
-                self.rsa256[bbcRadio4]["engines"] = Bar("yellow.png", 16 * 18)
+                self.rsa256[bbcRadio4]["engines"] = Bar("green.png", 16 * 18)
                 for cheese in self.rsa256[bbcRadio4]:
                     tadpole = self.rsa256[bbcRadio4][cheese]
                     frogs.add(tadpole)
                 bbcRadio4 = "two"
             elif bbcRadio4 == "two":
                 self.rsa256[bbcRadio4] = {}
-                self.rsa256[bbcRadio4]["health"] = Bar("green.png", (15 + 16) * 18)
+                self.rsa256[bbcRadio4]["health"] = Bar("yellow.png", (15 + 16) * 18)
                 self.rsa256[bbcRadio4]["weapons"] = Bar("red.png", (15 + 16) * 18)
                 self.rsa256[bbcRadio4]["shields"] = Bar("blue.png", (15 + 16) * 18)
-                self.rsa256[bbcRadio4]["engines"] = Bar("yellow.png", (15 + 16) * 18)
+                self.rsa256[bbcRadio4]["engines"] = Bar("green.png", (15 + 16) * 18)
                 for cheese in self.rsa256[bbcRadio4]:
                     tadpole = self.rsa256[bbcRadio4][cheese]
                     frogs.add(tadpole)
                 bbcRadio4 = "three"
             elif bbcRadio4 == "three":
                 self.rsa256[bbcRadio4] = {}
-                self.rsa256[bbcRadio4]["health"] = Bar("green.png", (2 * 16 + 14) * 18)
+                self.rsa256[bbcRadio4]["health"] = Bar("yellow.png", (2 * 16 + 14) * 18)
                 self.rsa256[bbcRadio4]["weapons"] = Bar("red.png", (2 * 16 + 14) * 18)
                 self.rsa256[bbcRadio4]["shields"] = Bar("blue.png", (2 * 16 + 14) * 18)
-                self.rsa256[bbcRadio4]["engines"] = Bar("yellow.png", (2 * 16 + 14) * 18)
+                self.rsa256[bbcRadio4]["engines"] = Bar("green.png", (2 * 16 + 14) * 18)
                 for cheese in self.rsa256[bbcRadio4]:
                     tadpole = self.rsa256[bbcRadio4][cheese]
                     frogs.add(tadpole)
                 bbcRadio4 = "four"
             elif bbcRadio4 == "four":
                 self.rsa256[bbcRadio4] = {}
-                self.rsa256[bbcRadio4]["health"] = Bar("green.png", (2 * 16 + 14 + 15) * 18)
+                self.rsa256[bbcRadio4]["health"] = Bar("yellow.png", (2 * 16 + 14 + 15) * 18)
                 self.rsa256[bbcRadio4]["weapons"] = Bar("red.png", (2 * 16 + 14 + 15) * 18)
                 self.rsa256[bbcRadio4]["shields"] = Bar("blue.png", (2 * 16 + 14 + 15) * 18)
-                self.rsa256[bbcRadio4]["engines"] = Bar("yellow.png", (2 * 16 + 14 + 15) * 18)
+                self.rsa256[bbcRadio4]["engines"] = Bar("green.png", (2 * 16 + 14 + 15) * 18)
                 for cheese in self.rsa256[bbcRadio4]:
                     tadpole = self.rsa256[bbcRadio4][cheese]
                     frogs.add(tadpole)
