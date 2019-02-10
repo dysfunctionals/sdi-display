@@ -31,19 +31,19 @@ class Butler(Thread):
                         try:
                             self.ships[i].bearing["engines"] = float(
                                 remote_ships[i]["engine"]["angle"]
-                            )
+                            )-90
                         except:
                             print("oof")
                         try:
                             self.ships[i].bearing["shields"] = float(
                                 remote_ships[i]["shields"]["angle"]
-                            )
+                            )-90
                         except:
                             print("oof")
                         try:
                             self.ships[i].bearing["weapons"] = float(
                                 remote_ships[i]["weapons"]["angle"]
-                            )
+                            )-90
                         except:
                             print("oof")
 
