@@ -90,7 +90,7 @@ class Game:
 
         for i in range(0, 70):
 
-            star = Star(random.randint(0, 1080), random.randint(0, 1920))
+            star = Star(0.5, random.randint(0, 1080), random.randint(0, 1920))
             stars.add(star)
 
 
