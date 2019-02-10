@@ -8,11 +8,34 @@ class Explosion(pygame.sprite.Sprite):
     self.last_change = time.time()
     self.delays = [
       0.4 * random.randint(8,12) / 10,
-      0.4 * random.randint(8,12) / 10
+      0.4 * random.randint(8,12) / 10,
+
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
+      0.4 * random.randint(8,12) / 10,
     ]
     self.image_ref = 0 
-    for suffix in ranger(16):
-      image = pygame.image.load(os.path.join("assets", "Animations","Explosions", "Explosion{colour}_{suffix}.png".format(colour=colour,suffix=suffix)))
+    for suffix in range(16):
+      image = pygame.image.load(os.path.join("assets", "Animations","Explosions", "Explosion{colour}_{suffix:02d}.png".format(colour=colour,suffix=suffix)))
       self.images.append(pygame.transform.scale(
         image,
         (
