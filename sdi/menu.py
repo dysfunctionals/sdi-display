@@ -126,6 +126,9 @@ class Menu:
 
         waiting = True
 
+        pygame.mixer.music.load(os.path.join("assets", "sound", "intro.mp3"))
+        pygame.mixer.music.play()
+
         while waiting:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
