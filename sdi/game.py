@@ -10,7 +10,7 @@ from sdi.sprites.ship_detail import ShipDetail
 from sdi.intro import Intro
 from sdi.menu import Menu
 from sdi.butler import Butler
-from sdi.sprites.TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe import TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe
+from sdi.sprites.Star import Star
 
 
 class Game:
@@ -90,7 +90,7 @@ class Game:
 
         for i in range(0, 70):
 
-            star = TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe(random.randint(0, 1080), random.randint(0, 1920))
+            star = Star(random.randint(0, 1080), random.randint(0, 1920))
             stars.add(star)
 
 

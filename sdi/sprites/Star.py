@@ -1,7 +1,7 @@
-import pygame, os, random
+import pygame, os, random, pyganim
 
 
-class TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe(pygame.sprite.Sprite):
+class Star(pygame.sprite.Sprite):
 
     def __init__(self, init_y, init_x=1920):
         super().__init__()

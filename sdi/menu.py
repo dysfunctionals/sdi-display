@@ -2,7 +2,7 @@ import pygame, random
 import copy
 import os
 from sdi.state import GameState
-from sdi.sprites.TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe import TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe
+from sdi.sprites.Star import Star
 
 
 class CircleBoi(pygame.sprite.Sprite):
@@ -118,7 +118,7 @@ class Menu:
         stars = pygame.sprite.Group()
 
         for i in range(0, 70):
-            star = TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe(random.randint(0, 1080), random.randint(0, 1920))
+            star = Star(random.randint(0, 1080), random.randint(0, 1920))
             stars.add(star)
 
         pygame.mixer.music.load(os.path.join("assets", "sound", "intro.mp3"))
