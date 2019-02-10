@@ -33,5 +33,5 @@ config = {
             "controls": [118, 98, 110, 109],
         },
     ],
-    "server": "http://localhost:8080"
+    "server": "http://localhost:8080/metrics"
 }
