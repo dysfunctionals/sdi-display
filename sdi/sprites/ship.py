@@ -35,6 +35,12 @@ class Spaceship(pygame.sprite.Sprite):
             "weapons": 0,
         }
 
+        self.active = {
+            "engines": False,
+            "shields": False,
+            "weapons": False,
+        }
+
         self.health = 100
 
     def update(self):

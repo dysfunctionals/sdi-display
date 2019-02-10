@@ -32,5 +32,6 @@ config = {
             "detail_pos": (1920 - 288 + 18 + 14, 828 + 7),
             "controls": [118, 98, 110, 109],
         },
-    ]
+    ],
+    "server": "http://localhost:8080/metrics"
 }

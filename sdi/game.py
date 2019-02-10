@@ -9,6 +9,7 @@ from sdi.detailoid import Detailoid
 from sdi.sprites.ship_detail import ShipDetail
 from sdi.intro import Intro
 from sdi.menu import Menu
+from sdi.butler import Butler
 
 
 class Game:
@@ -71,6 +72,8 @@ class Game:
             ships.append(ship)
 
         all_sprites.add(d)
+        b = Butler(game.config["server"], ships)
+        b.start()
 
         # Note: two for loops through ships are used because it needs to work like that
         for sh in game.config["ships"]:
@@ -78,6 +81,8 @@ class Game:
             shop.rect.x = sh["detail_pos"][0]
             shop.rect.y = sh["detail_pos"][1]
             all_sprites.add(shop)
+
+        d.eat_frogs(all_sprites, ships)
 
         pygame.mixer.music.load(os.path.join("assets", "sound", "main.mp3"))
         pygame.mixer.music.play()
