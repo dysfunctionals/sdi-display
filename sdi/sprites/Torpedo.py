@@ -46,7 +46,6 @@ class Torpedo(pygame.sprite.Sprite):
                 self.image_ref = 0
             self.image = self.images[self.image_ref]
             self.last_change = time.time()
-        self.rect.x = int(self.x_pos)
 
         self.rect.x += self.x_vel
         self.rect.y += self.y_vel
