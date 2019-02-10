@@ -9,6 +9,7 @@ from sdi.detailoid import Detailoid
 from sdi.sprites.ship_detail import ShipDetail
 from sdi.intro import Intro
 from sdi.menu import Menu
+from sdi.butler import Butler
 
 
 class Game:
@@ -71,6 +72,8 @@ class Game:
             ships.append(ship)
 
         all_sprites.add(d)
+        b = Butler(game.config["server"], ships)
+        b.start()
 
         # Note: two for loops through ships are used because it needs to work like that
         for sh in game.config["ships"]:
