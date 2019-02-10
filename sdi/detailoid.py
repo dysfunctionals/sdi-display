@@ -47,14 +47,16 @@ class Detailoid(pygame.sprite.Sprite):
 
         for ship in self.g:
             dod = self.rsa256[current]["health"]
-            dod.rect.height = (ship.health / 100)*(15*18)
-            dod.image = pygame.transform.scale(dod.image, (1*18, 1+math.floor((ship.health / 100)*(14*18))))
-            dod.rect.bottom = dod.bot
+            if ship.health > 0:
+                dod.rect.bottom = dod.bot
+                dod.rect.height = (ship.health / 100)*(15*18)
+                dod.image = pygame.transform.scale(dod.image, (1*18, 1+math.floor((ship.health / 100)*(14*18))))
 
+            dod.rect.bottom = dod.bot
             dod = self.rsa256[current]["weapons"]
             dod.rect.height = (ship.power["weapons"] / 100) * (15 * 18)
             dod.image = pygame.transform.scale(dod.image, (1 * 18, 1+math.floor((ship.power["weapons"] / 100) * (14 * 18))))
-            dod.rect.bottom = dod.bot
+
 
             dod = self.rsa256[current]["shields"]
             dod.rect.height = (ship.power["shields"] / 100) * (15 * 18)
@@ -63,8 +65,8 @@ class Detailoid(pygame.sprite.Sprite):
 
             dod = self.rsa256[current]["engines"]
             dod.rect.height = (ship.power["engines"] * 2) * (15 * 18)
-            print("Engines = {}".format(ship.power["engines"]))
-            print("Weapons = {}".format(ship.power["weapons"]))
+            # print("Engines = {}".format(ship.power["engines"]))
+            # print("Weapons = {}".format(ship.power["weapons"]))
             dod.image = pygame.transform.scale(dod.image, (1 * 18, 1+math.floor((2 * ship.power["engines"]) * (14 * 18))))
             dod.rect.bottom = dod.bot
 

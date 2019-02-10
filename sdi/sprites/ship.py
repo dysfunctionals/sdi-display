@@ -40,9 +40,9 @@ class Spaceship(pygame.sprite.Sprite):
         self.health = 100
 
     def update(self):
-        print("{col} health is {health}".format(col=self.colour,health=self.health))
+        # print("{col} health is {health}".format(col=self.colour,health=self.health))
         if self.health <0 :
-            print("{me} has now died".format(me=self.colour))
+            # print("{me} has now died".format(me=self.colour))
             self.kill()
             self.explosion_group.add(Explosion(self.colour, self.rect.x, self.rect.y))
             return
