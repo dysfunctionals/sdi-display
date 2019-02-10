@@ -1,14 +1,16 @@
 import pygame, math, os, time
 from .Torpedo import Torpedo
+from .Explosion import Explosion
 
 FRICTION_COEFF = 1 - 0.015
 
 
 class Spaceship(pygame.sprite.Sprite):
-    def __init__(self, colour, img_path, bearing, torpedo_group):
+    def __init__(self, colour, img_path, bearing, torpedo_group, explosion_group):
 
         super().__init__()
         self.torpedo_group = torpedo_group
+        self.explosion_group = explosion_group
         self.colour = colour
         self.last_shoot = 0
         self.shoot_delay = 0.9
@@ -42,6 +44,7 @@ class Spaceship(pygame.sprite.Sprite):
         if self.health <0 :
             print("{me} has now died".format(me=self.colour))
             self.kill()
+            self.explosion_group.add(Explosion(self.colour, self.rect.x, self.rect.y))
             return
         self.bearing["engines"] = self.bearing["engines"] % 360
         self.bearing["shields"] = self.bearing["shields"] % 360

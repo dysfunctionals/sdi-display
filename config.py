@@ -37,5 +37,5 @@ config = {
             "colour" : "Green",
         },
     ],
-    "server": "http://localhost:8080/metrics",
+    "server": "http://35.234.154.91:8080/metrics",
 }
