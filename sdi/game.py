@@ -1,6 +1,6 @@
 """You just lost the game."""
 
-import pygame, os
+import pygame, os, random
 
 from sdi.state import StateMachine, GameState
 from sdi.background import Background
@@ -10,6 +10,7 @@ from sdi.sprites.ship_detail import ShipDetail
 from sdi.intro import Intro
 from sdi.menu import Menu
 from sdi.butler import Butler
+from sdi.sprites.TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe import TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe
 
 
 class Game:
@@ -85,6 +86,14 @@ class Game:
 
         d.eat_frogs(all_sprites, ships)
 
+        stars = pygame.sprite.Group()
+
+        for i in range(0, 70):
+
+            star = TwinkleTwinkleLittleStarHowIWonderWhatYouAreUpAboveThe(random.randint(0, 1080), random.randint(0, 1920))
+            stars.add(star)
+
+
         pygame.mixer.music.load(os.path.join("assets", "sound", "main.mp3"))
         pygame.mixer.music.play()
 
@@ -118,8 +127,10 @@ class Game:
                             pass
 
             all_sprites.update()
+            stars.update()
 
-            background.render(screen)
+            background.render()
+            stars.draw(screen)
             all_sprites.draw(screen)
 
             pygame.display.flip()
