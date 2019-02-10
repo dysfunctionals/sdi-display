@@ -5,13 +5,10 @@ from sdi.state import GameState
 
 
 class CircleBoi(pygame.sprite.Sprite):
-
     def __init__(self):
         super().__init__()
 
-        self.image = pygame.image.load(
-            os.path.join("assets", "circle.png")
-        )
+        self.image = pygame.image.load(os.path.join("assets", "circle.png"))
         self.image = pygame.transform.scale(self.image, (500, 500))
 
         self.rect = self.image.get_rect()
@@ -26,13 +23,10 @@ class CircleBoi(pygame.sprite.Sprite):
 
 
 class TitleBoi(pygame.sprite.Sprite):
-
     def __init__(self):
         super().__init__()
 
-        self.image = pygame.image.load(
-            os.path.join("assets", "title.png")
-        )
+        self.image = pygame.image.load(os.path.join("assets", "title.png"))
 
         self.rect = self.image.get_rect()
 
@@ -46,13 +40,10 @@ class TitleBoi(pygame.sprite.Sprite):
 
 
 class PressyBoi(pygame.sprite.DirtySprite):
-
     def __init__(self):
         super().__init__()
 
-        self.raw_image = pygame.image.load(
-            os.path.join("assets", "begin.png")
-        )
+        self.raw_image = pygame.image.load(os.path.join("assets", "begin.png"))
 
         self.image = copy.copy(self.raw_image)
 
@@ -82,13 +73,10 @@ class PressyBoi(pygame.sprite.DirtySprite):
 
 
 class Ronald(pygame.sprite.DirtySprite):
-
     def __init__(self):
         super().__init__()
 
-        self.image = pygame.image.load(
-            os.path.join("assets", "sizeable-ronald.png")
-        )
+        self.image = pygame.image.load(os.path.join("assets", "sizeable-ronald.png"))
 
         self.rect = self.image.get_rect()
 
@@ -103,8 +91,8 @@ class Ronald(pygame.sprite.DirtySprite):
         if self.rect.y > 405:
             self.rect.y -= 4.5
 
-class Menu:
 
+class Menu:
     @staticmethod
     def run(screen):
 

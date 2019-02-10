@@ -4,7 +4,6 @@ from sdi.state import GameState
 
 
 class Intro:
-
     @staticmethod
     def run(screen):
         screen.fill((0, 0, 0))

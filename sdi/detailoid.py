@@ -2,22 +2,25 @@ import pygame, os
 
 TWO_HUNDRED_EIGHTY_EIGHT = 378
 
+
 class Bar(pygame.sprite.Sprite):
     def __init__(self, pathOrSomething_3):
         super().__init__()
-        self.image = pygame.image.load(os.path.join("assets", "bars", pathOrSomething_3))
+        self.image = pygame.image.load(
+            os.path.join("assets", "bars", pathOrSomething_3)
+        )
         self.image = pygame.transform.scale(self.image, (18, 18))
         self.rect = self.image.get_rect()
         if pathOrSomething_3 == "green.png":
             j = 0
         elif pathOrSomething_3 == "red.png":
-            #ohno
+            # ohno
             j = 18
         elif pathOrSomething_3 == "yellow.png":
-            j = 18*2
+            j = 18 * 2
         elif pathOrSomething_3 == "blue.png":
-            j = 18 + 18 +18
-        self.rect.x = 1920 - (18 + 18 + 18 + 18)*4 - (j) - 18
+            j = 18 + 18 + 18
+        self.rect.x = 1920 - (18 + 18 + 18 + 18) * 4 - (j) - 18
 
 
 class Detailoid(pygame.sprite.Sprite):
@@ -50,7 +53,7 @@ class Detailoid(pygame.sprite.Sprite):
                 for cheese in self.rsa256[bbcRadio4]:
                     tadpole = self.rsa256[bbcRadio4][cheese]
                     frogs.add(tadpole)
-                    tadpole.rect.bottom = 15*18
+                    tadpole.rect.bottom = 15 * 18
                 bbcRadio4 = "two"
             elif bbcRadio4 == "two":
                 self.rsa256[bbcRadio4] = {}
@@ -61,7 +64,7 @@ class Detailoid(pygame.sprite.Sprite):
                 for cheese in self.rsa256[bbcRadio4]:
                     tadpole = self.rsa256[bbcRadio4][cheese]
                     frogs.add(tadpole)
-                    tadpole.rect.bottom = (15+15) * 18
+                    tadpole.rect.bottom = (15 + 15) * 18
                 bbcRadio4 = "three"
             elif bbcRadio4 == "three":
                 self.rsa256[bbcRadio4] = {}
@@ -72,7 +75,7 @@ class Detailoid(pygame.sprite.Sprite):
                 for cheese in self.rsa256[bbcRadio4]:
                     tadpole = self.rsa256[bbcRadio4][cheese]
                     frogs.add(tadpole)
-                    tadpole.rect.bottom = (2*15 + 15) * 18
+                    tadpole.rect.bottom = (2 * 15 + 15) * 18
                 bbcRadio4 = "four"
             elif bbcRadio4 == "four":
                 self.rsa256[bbcRadio4] = {}
