@@ -99,11 +99,11 @@ class Game:
                             if direction == 0:
                                 ships[index].power['engines'] += velocity_delta
                             if direction == 1:
-                                ships[index].bearing += bearing_delta
+                                ships[index].bearing["engines"] += bearing_delta
                             if direction == 2:
                                 ships[index].power['engines'] -= velocity_delta
                             if direction == 3:
-                                ships[index].bearing -= bearing_delta
+                                ships[index].bearing['engines'] -= bearing_delta
 
                         except ValueError:
                             pass
