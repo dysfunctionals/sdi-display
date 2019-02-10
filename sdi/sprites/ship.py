@@ -75,7 +75,7 @@ class Spaceship(pygame.sprite.Sprite):
         ):
             self.x_vel = -self.x_vel
 
-        if time.time() > self.last_shoot + self.shoot_delay:
+        if self.active["weapons"] and time.time() > self.last_shoot + (self.shoot_delay/(self.power["weapons"]/65 + 0.1)):
             self.shoot()
             self.last_shoot = time.time()
 
