@@ -79,6 +79,8 @@ class Game:
             shop.rect.y = sh["detail_pos"][1]
             all_sprites.add(shop)
 
+        d.eat_frogs(all_sprites, ships)
+
         while game_playing:
 
             for event in pygame.event.get():
