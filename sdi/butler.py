@@ -15,29 +15,56 @@ class Butler(Thread):
                 if r.status_code == 200:
                     remote_ships = r.json()
                     for i in range(0, 4):
-                        self.ships[i].power["engines"] = float(remote_ships[i]["engine"]["power"]) / 200
-                        self.ships[i].power["shields"] = float(remote_ships[i]["shields"]["power"])
-                        self.ships[i].power["weapons"] = float(remote_ships[i]["weapons"]["power"])
+                        try:
+                            self.ships[i].power["engines"] = float(remote_ships[i]["engine"]["power"]) / 200
+                        except:
+                            print("oof")
+                        try:
+                            self.ships[i].power["shields"] = float(remote_ships[i]["shields"]["power"])
+                        except:
+                            print("oof")
+                        try:
+                            self.ships[i].power["weapons"] = float(remote_ships[i]["weapons"]["power"])
+                        except:
+                            print("oof")
 
-                        self.ships[i].bearing["engines"] = float(
-                            remote_ships[i]["engine"]["angle"]
-                        )
-                        self.ships[i].bearing["shields"] = float(
-                            remote_ships[i]["shields"]["angle"]
-                        )
-                        self.ships[i].bearing["weapons"] = float(
-                            remote_ships[i]["weapons"]["angle"]
-                        )
+                        try:
+                            self.ships[i].bearing["engines"] = float(
+                                remote_ships[i]["engine"]["angle"]
+                            )
+                        except:
+                            print("oof")
+                        try:
+                            self.ships[i].bearing["shields"] = float(
+                                remote_ships[i]["shields"]["angle"]
+                            )
+                        except:
+                            print("oof")
+                        try:
+                            self.ships[i].bearing["weapons"] = float(
+                                remote_ships[i]["weapons"]["angle"]
+                            )
+                        except:
+                            print("oof")
 
-                        self.ships[i].active["engines"] = bool(int(
-                            remote_ships[i]["engine"]["active"]
-                        ))
-                        self.ships[i].active["shields"] = bool(int(
-                            remote_ships[i]["shields"]["active"]
-                        ))
-                        self.ships[i].active["weapons"] = bool(int(
-                            remote_ships[i]["weapons"]["active"]
-                        ))
+                        try:
+                            self.ships[i].active["engines"] = bool(int(
+                                remote_ships[i]["engine"]["active"]
+                            ))
+                        except:
+                            print("oof")
+                        try:
+                            self.ships[i].active["shields"] = bool(int(
+                                remote_ships[i]["shields"]["active"]
+                            ))
+                        except:
+                            print("oof")
+                        try:
+                            self.ships[i].active["weapons"] = bool(int(
+                                remote_ships[i]["weapons"]["active"]
+                            ))
+                        except:
+                            print("oof")
                 else:
                     print("[WARNING] Server returned not 200; ungood!")
             except:
