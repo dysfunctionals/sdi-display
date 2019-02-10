@@ -1,10 +1,15 @@
-import pygame, math, os
-
+import pygame, math, os, time
+from .Torpedo import Torpedo
 
 class Spaceship(pygame.sprite.Sprite):
-    def __init__(self, img_path, bearing):
+    def __init__(self, img_path, bearing, torpedo_group):
 
         super().__init__()
+        self.torpedo_group = torpedo_group
+        self.colour = "Green"
+        self.last_shoot = 0
+        self.shoot_delay = 0.9
+
 
         self.raw_image = pygame.image.load(
             os.path.join("assets", "spaceships", img_path)
@@ -59,6 +64,14 @@ class Spaceship(pygame.sprite.Sprite):
             self.rect.x > (1920 - 378) - self.image.get_width() and self.x_vel > 0
         ):
             self.x_vel = -self.x_vel
+
+        if time.time() > self.last_shoot + self.shoot_delay:
+            self.shoot()
+            self.last_shoot = time.time()
+
+    def shoot(self):
+        self.torpedo_group.add(Torpedo("Green",self.bearing["weapons"],self.rect.x,self.rect.y,self.x_vel,self.y_vel))
+
 
     @staticmethod
     def rotate(image, rect, angle):

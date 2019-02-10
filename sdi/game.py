@@ -52,7 +52,7 @@ class Game:
 
         all_sprites = pygame.sprite.Group()
         ship_group = pygame.sprite.Group()
-
+        torpedo_group = pygame.sprite.Group()
         ships = []
 
         background = Background(screen)
@@ -66,7 +66,7 @@ class Game:
         d = Detailoid()
 
         for sh in game.config["ships"]:
-            ship = Spaceship(sh["img"], sh["init_bearing"])
+            ship = Spaceship(sh["img"], sh["init_bearing"],torpedo_group)
             ship.rect.x = sh["init_pos"][0]
             ship.rect.y = sh["init_pos"][1]
             all_sprites.add(ship)
@@ -129,10 +129,14 @@ class Game:
             all_sprites.update()
             stars.update()
 
+
+            torpedo_group.update()
+
+
             background.render()
             stars.draw(screen)
             all_sprites.draw(screen)
-
+            torpedo_group.draw(screen)
             pygame.display.flip()
             clock.tick(60)
 
