@@ -5,11 +5,11 @@ FRICTION_COEFF = 1 - 0.015
 
 
 class Spaceship(pygame.sprite.Sprite):
-    def __init__(self, img_path, bearing, torpedo_group):
+    def __init__(self, colour, img_path, bearing, torpedo_group):
 
         super().__init__()
         self.torpedo_group = torpedo_group
-        self.colour = "Green"
+        self.colour = colour
         self.last_shoot = 0
         self.shoot_delay = 0.9
 
@@ -76,7 +76,7 @@ class Spaceship(pygame.sprite.Sprite):
             self.last_shoot = time.time()
 
     def shoot(self):
-        self.torpedo_group.add(Torpedo("Green",self.bearing["weapons"],self.rect.x,self.rect.y,self.x_vel,self.y_vel))
+        self.torpedo_group.add(Torpedo(self.colour,self.bearing["weapons"],self.rect.x,self.rect.y,self.x_vel,self.y_vel))
 
 
     @staticmethod
