@@ -29,7 +29,7 @@ class Intro:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     return GameState.END
-                elif event.type == MUSIC_DEATH:
+                elif event.type == MUSIC_DEATH or event.type == pygame.KEYDOWN:
                     waiting = False
 
         return GameState.MENU
