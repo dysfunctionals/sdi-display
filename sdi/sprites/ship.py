@@ -1,5 +1,6 @@
 import pygame, math, os
 
+FRICTION_COEFF = 1 - 0.015
 
 class Spaceship(pygame.sprite.Sprite):
     def __init__(self, img_path, bearing):
@@ -37,6 +38,9 @@ class Spaceship(pygame.sprite.Sprite):
 
         self.rect.x += self.x_vel
         self.rect.y += self.y_vel
+
+        self.x_vel *= FRICTION_COEFF
+        self.y_vel *= FRICTION_COEFF
 
         if self.active["engines"]:
             self.x_vel -= (
