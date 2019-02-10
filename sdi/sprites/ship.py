@@ -38,12 +38,13 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect.x += self.x_vel
         self.rect.y += self.y_vel
 
-        self.x_vel -= (
-            math.sin(math.radians(self.bearing["engines"])) * self.power["engines"]
-        )
-        self.y_vel -= (
-            math.cos(math.radians(self.bearing["engines"])) * self.power["engines"]
-        )
+        if self.active["engines"]:
+            self.x_vel -= (
+                    math.sin(math.radians(self.bearing["engines"])) * self.power["engines"]
+            )
+            self.y_vel -= (
+                    math.cos(math.radians(self.bearing["engines"])) * self.power["engines"]
+            )
 
         self.image, self.rect = Spaceship.rotate(
             self.raw_image, self.rect, self.bearing["engines"]
