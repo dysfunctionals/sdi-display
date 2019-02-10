@@ -14,15 +14,10 @@ class Butler(Thread):
             if r.status_code == 200:
                 remote_ships = r.json()
                 for i in range(0, 4):
-                    self.ships[i].power["engines"] = int(
-                        remote_ships[i]["engine"]["power"]
-                    )
-                    self.ships[i].power["shields"] = int(
-                        remote_ships[i]["shields"]["power"]
-                    )
-                    self.ships[i].power["weapons"] = int(
-                        remote_ships[i]["weapons"]["power"]
-                    )
+
+                    self.ships[i].power["engines"] = float(remote_ships[i]["engine"]["power"]) / 200
+                    self.ships[i].power["shields"] = float(remote_ships[i]["shields"]["power"])
+                    self.ships[i].power["weapons"] = float(remote_ships[i]["weapons"]["power"])
 
                     self.ships[i].bearing["engines"] = int(
                         remote_ships[i]["engine"]["angle"]
@@ -44,4 +39,4 @@ class Butler(Thread):
                         remote_ships[i]["weapons"]["active"]
                     )
             else:
-                print("[WARNING] Request to server failed!")
+                print("[WARNING] Server returned not 200; ungood!")
