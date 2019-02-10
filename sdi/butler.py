@@ -1,8 +1,8 @@
 from threading import Thread
 import requests
 
-class Butler(Thread):
 
+class Butler(Thread):
     def __init__(self, whomst, spacshaps):
         super().__init__()
         self.ships = spacshaps
@@ -14,16 +14,34 @@ class Butler(Thread):
             if r.status_code == 200:
                 remote_ships = r.json()
                 for i in range(0, 4):
-                    self.ships[i].power["engines"] = int(remote_ships[i]["engine"]["power"])
-                    self.ships[i].power["shields"] = int(remote_ships[i]["shields"]["power"])
-                    self.ships[i].power["weapons"] = int(remote_ships[i]["weapons"]["power"])
+                    self.ships[i].power["engines"] = int(
+                        remote_ships[i]["engine"]["power"]
+                    )
+                    self.ships[i].power["shields"] = int(
+                        remote_ships[i]["shields"]["power"]
+                    )
+                    self.ships[i].power["weapons"] = int(
+                        remote_ships[i]["weapons"]["power"]
+                    )
 
-                    self.ships[i].bearing["engines"] = int(remote_ships[i]["engine"]["angle"])
-                    self.ships[i].bearing["shields"] = int(remote_ships[i]["shields"]["angle"])
-                    self.ships[i].bearing["weapons"] = int(remote_ships[i]["weapons"]["angle"])
+                    self.ships[i].bearing["engines"] = int(
+                        remote_ships[i]["engine"]["angle"]
+                    )
+                    self.ships[i].bearing["shields"] = int(
+                        remote_ships[i]["shields"]["angle"]
+                    )
+                    self.ships[i].bearing["weapons"] = int(
+                        remote_ships[i]["weapons"]["angle"]
+                    )
 
-                    self.ships[i].active["engines"] = int(remote_ships[i]["engine"]["active"])
-                    self.ships[i].active["shields"] = int(remote_ships[i]["shields"]["active"])
-                    self.ships[i].active["weapons"] = int(remote_ships[i]["weapons"]["active"])
+                    self.ships[i].active["engines"] = int(
+                        remote_ships[i]["engine"]["active"]
+                    )
+                    self.ships[i].active["shields"] = int(
+                        remote_ships[i]["shields"]["active"]
+                    )
+                    self.ships[i].active["weapons"] = int(
+                        remote_ships[i]["weapons"]["active"]
+                    )
             else:
                 print("[WARNING] Request to server failed!")
