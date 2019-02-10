@@ -1,6 +1,6 @@
 """You just lost the game."""
 
-import pygame
+import pygame, os
 
 from sdi.state import StateMachine, GameState
 from sdi.background import Background
@@ -83,6 +83,9 @@ class Game:
             all_sprites.add(shop)
 
         d.eat_frogs(all_sprites, ships)
+
+        pygame.mixer.music.load(os.path.join("assets", "sound", "main.mp3"))
+        pygame.mixer.music.play()
 
         while game_playing:
 
