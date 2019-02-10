@@ -129,7 +129,12 @@ class Game:
             all_sprites.update()
             stars.update()
 
-
+            for torpedo in torpedo_group:
+                for ship in ship_group:
+                    if torpedo.rect.colliderect(ship.rect):
+                        if torpedo.colour != ship.colour:
+                            ship.health -= torpedo.damage
+                            torpedo.kill()
             torpedo_group.update()
 
 

@@ -38,7 +38,11 @@ class Spaceship(pygame.sprite.Sprite):
         self.health = 100
 
     def update(self):
-
+        print("{col} health is {health}".format(col=self.colour,health=self.health))
+        if self.health <0 :
+            print("{me} has now died".format(me=self.colour))
+            self.kill()
+            return
         self.bearing["engines"] = self.bearing["engines"] % 360
         self.bearing["shields"] = self.bearing["shields"] % 360
         self.bearing["weapons"] = self.bearing["weapons"] % 360

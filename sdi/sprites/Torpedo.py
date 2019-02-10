@@ -10,6 +10,8 @@ class Torpedo(pygame.sprite.Sprite):
         self.y_vel = ship_y_vel
         self.bearing = bearing
         self.images = []
+        self.colour = colour
+        self.damage = 11
         self.last_change = time.time()
         self.delays = [0.4 * random.randint(8,12) / 10,
                        0.4 * random.randint(8,12) / 10
